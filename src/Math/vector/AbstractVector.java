@@ -1,9 +1,22 @@
-package Math;
+package Math.vector;
 
 
 public abstract class AbstractVector implements Vector {
     protected int size;
     protected double[] values;
+
+    @Override
+    public abstract Vector vectorProduct(Vector v1, Vector v2);
+
+    @Override
+    public double[] getValues() {
+        return values;
+    }
+
+    @Override
+    public int getSize() {
+        return size;
+    }
 
     @Override
     public abstract void setValues(double[] values);

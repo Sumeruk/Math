@@ -1,6 +1,8 @@
-package Math;
+package Math.vector;
 
 public interface Vector {
+
+    Vector vectorProduct(Vector v1, Vector v2);
 
     void setValues(double[] values);
 

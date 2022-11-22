@@ -1,4 +1,4 @@
-package Math;
+package Math.vector;
 
 public class Vector2F extends AbstractVector implements Vector {
 
@@ -21,20 +21,15 @@ public class Vector2F extends AbstractVector implements Vector {
     }
 
     @Override
+    public Vector vectorProduct(Vector v1, Vector v2) {
+        return null;
+    }
+
+    @Override
     public void setValues(double[] values) {
         if (checkLengthInputValues(values)) {
             this.values = values;
         }
-    }
-
-    @Override
-    public int getSize() {
-        return size;
-    }
-
-    @Override
-    public double[] getValues() {
-        return values;
     }
 
     private boolean checkLengthInputValues(double[] values) {
