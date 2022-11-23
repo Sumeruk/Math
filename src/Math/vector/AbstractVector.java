@@ -8,6 +8,8 @@ public abstract class AbstractVector implements Vector {
     @Override
     public abstract Vector vectorProduct(Vector v1, Vector v2);
 
+    protected abstract boolean checkLengthInputValues(double[] values);
+
     @Override
     public double[] getValues() {
         return values;
@@ -19,7 +21,12 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public abstract void setValues(double[] values);
+    public void setValues(double[] values){
+        if(checkLengthInputValues(values)){
+            this.values = values;
+            this.size = values.length;
+        }
+    }
 
     @Override
     public Vector plusTwoVectors(Vector v1, Vector v2) {
@@ -38,7 +45,7 @@ public abstract class AbstractVector implements Vector {
 
     @Override
     public Vector minusTwoVectors(Vector v1, Vector v2) {
-        Vector vRes = new Vector2F();
+
         if (v1.getSize() == v2.getSize()) {
             double[] tmp = new double[v1.getSize()];
 
@@ -46,14 +53,13 @@ public abstract class AbstractVector implements Vector {
                 tmp[i] = v1.getValues()[i] + v2.getValues()[i];
             }
 
-            vRes.setValues(tmp);
+            this.values = tmp;
         }
-        return vRes;
+        return this;
     }
 
     @Override
     public Vector multiplyVectorOnScalar(Vector v1, double scalar) {
-        Vector vRes = new Vector2F();
 
         double[] tmp = new double[v1.getSize()];
 
@@ -61,14 +67,13 @@ public abstract class AbstractVector implements Vector {
             tmp[i] = v1.getValues()[i] * scalar;
         }
 
-        vRes.setValues(tmp);
+        this.values = tmp;
 
-        return vRes;
+        return this;
     }
 
     @Override
     public Vector divisionVectorOnScalar(Vector v1, double scalar){
-        Vector vRes = new Vector2F();
 
         double[] tmp = new double[v1.getSize()];
 
@@ -76,9 +81,9 @@ public abstract class AbstractVector implements Vector {
             tmp[i] = v1.getValues()[i] / scalar;
         }
 
-        vRes.setValues(tmp);
+        this.values = tmp;
 
-        return vRes;
+        return this;
     }
 
     @Override
@@ -94,13 +99,17 @@ public abstract class AbstractVector implements Vector {
 
     @Override
     public Vector vectorNormalization(Vector v1){
-        Vector vRes = new Vector2F();
+
         double[] tmp = new double[v1.getSize()];
+
+        double length = v1.vectorLength(v1);
         for (int i = 0; i < v1.getSize(); i++){
-            tmp[i] = v1.getValues()[i] / v1.vectorLength(v1);
+            tmp[i] = v1.getValues()[i] / length;
         }
-        vRes.setValues(tmp);
-        return vRes;
+
+        this.values = (tmp);
+
+        return this;
     }
 
     @Override

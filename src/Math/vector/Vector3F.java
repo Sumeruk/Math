@@ -21,13 +21,6 @@ public class Vector3F extends AbstractVector implements Vector {
         super.values[2] = v3;
     }
 
-    @Override
-    public void setValues(double[] values) {
-        if (checkLengthInputValues(values)) {
-            this.values = values;
-        }
-    }
-
     public Vector vectorProduct(Vector v1, Vector v2){
         Vector vRes = new Vector3F();
         double[] tmp = new double[3];
@@ -40,7 +33,8 @@ public class Vector3F extends AbstractVector implements Vector {
         return vRes;
     }
 
-    private boolean checkLengthInputValues(double[] values) {
+    @Override
+    protected boolean checkLengthInputValues(double[] values) {
         return values.length == 3;
     }
 

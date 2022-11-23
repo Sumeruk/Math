@@ -23,18 +23,12 @@ public class Vector4F extends AbstractVector implements Vector {
     }
 
     @Override
-    public void setValues(double[] values) {
-        if (checkLengthInputValues(values)) {
-            this.values = values;
-        }
-    }
-
-    @Override
     public Vector vectorProduct(Vector v1, Vector v2) {
         return null;
     }
 
-    private boolean checkLengthInputValues(double[] values) {
+    @Override
+    protected boolean checkLengthInputValues(double[] values) {
         return values.length == 4;
     }
 

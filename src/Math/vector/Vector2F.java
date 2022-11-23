@@ -26,13 +26,7 @@ public class Vector2F extends AbstractVector implements Vector {
     }
 
     @Override
-    public void setValues(double[] values) {
-        if (checkLengthInputValues(values)) {
-            this.values = values;
-        }
-    }
-
-    private boolean checkLengthInputValues(double[] values) {
+    protected boolean checkLengthInputValues(double[] values) {
         return values.length == 2;
     }
 }
