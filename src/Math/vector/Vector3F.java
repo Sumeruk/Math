@@ -1,5 +1,7 @@
 package Math.vector;
 
+import Math.exception.MathExceptions;
+
 public class Vector3F extends AbstractVector implements Vector {
 
     public Vector3F() {
@@ -8,7 +10,8 @@ public class Vector3F extends AbstractVector implements Vector {
     public Vector3F(double[] values) {
         if (checkLengthInputValues(values)) {
             super.values = values;
-        }
+            super.size = values.length;
+        } else throw new MathExceptions();
     }
 
     public Vector3F(int v1, int v2, int v3) {

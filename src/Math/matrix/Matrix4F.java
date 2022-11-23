@@ -2,11 +2,11 @@ package Math.matrix;
 
 import Math.exception.MathExceptions;
 import Math.vector.Vector;
-import Math.vector.Vector3F;
+import Math.vector.Vector4F;
 
-public class Matrix3F extends AbstractMatrix implements Matrix  {
+public class Matrix4F extends AbstractMatrix implements Matrix{
 
-    public Matrix3F(double[][] values) {
+    public Matrix4F(double[][] values) {
         if(checkLengthInputValues(values)) {
             super.value = values;
             super.size = values.length;
@@ -15,17 +15,18 @@ public class Matrix3F extends AbstractMatrix implements Matrix  {
         }
     }
 
-    public Matrix3F() {
+    public Matrix4F() {
     }
 
     @Override
     protected boolean checkLengthInputValues(double[][] values) {
-        return values.length == 3 && values[0].length == 3;
+        return values.length == 4 && values[0].length == 4;
     }
+
 
     @Override
     public Vector multiplyMatrixOnVector(Matrix m1, Vector v1) {
-        Vector vRes = new Vector3F();
+        Vector vRes = new Vector4F();
 
         double[] tmp = new double[m1.getSize()];
 
@@ -39,5 +40,6 @@ public class Matrix3F extends AbstractMatrix implements Matrix  {
 
         vRes.setValues(tmp);
         return vRes;
+
     }
 }

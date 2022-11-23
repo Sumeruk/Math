@@ -1,7 +1,8 @@
 package Math.matrix;
 
+import Math.exception.MathExceptions;
 import Math.vector.Vector;
-import Math.vector.Vector3F;
+
 
 public abstract class AbstractMatrix implements Matrix{
     double[][] value;
@@ -16,7 +17,7 @@ public abstract class AbstractMatrix implements Matrix{
 
     @Override
     public double[][] getValue() {
-        return value;
+        return this.value;
     }
 
     @Override
@@ -25,12 +26,11 @@ public abstract class AbstractMatrix implements Matrix{
         if(checkLengthInputValues(value)) {
             this.value = value;
             this.size = value.length;
-        }
+        } else throw new MathExceptions();
     }
 
     @Override
     public Matrix plusMatrix(Matrix m1, Matrix m2) {
-        Matrix mRes = new Matrix3F();
 
         double[][] tmp = new double[m1.getSize()][m1.getSize()];
 
@@ -41,15 +41,12 @@ public abstract class AbstractMatrix implements Matrix{
                 }
             }
         }
-
-        mRes.setValue(tmp);
-
-        return mRes;
+        this.value = tmp;
+        return this;
     }
 
     @Override
     public Matrix minusMatrix(Matrix m1, Matrix m2) {
-        Matrix mRes = new Matrix3F();
 
         double[][] tmp = new double[m1.getSize()][m1.getSize()];
 
@@ -61,33 +58,15 @@ public abstract class AbstractMatrix implements Matrix{
             }
         }
 
-        mRes.setValue(tmp);
-
-        return mRes;
+        this.value = tmp;
+        return this;
     }
 
     @Override
-    public Vector multiplyMatrixOnVector(Matrix m1, Vector v1) {
-        Vector vRes = new Vector3F();
-
-        double[] tmp = new double[m1.getSize()];
-
-        if (m1.getSize() == v1.getSize()) {
-            for (int i = 0; i < m1.getSize(); i++) {
-                for (int j = 0; j < m1.getSize(); j++) {
-                    tmp[i] = tmp[i] + m1.getValue()[i][j] * v1.getValues()[j];
-                }
-            }
-        }
-        vRes.setValues(tmp);
-
-        return vRes;
-    }
+    public abstract Vector multiplyMatrixOnVector(Matrix m1, Vector v1);
 
     @Override
     public Matrix multiplyTwoMatrix(Matrix m1, Matrix m2) {
-
-        Matrix mRes = new Matrix3F();
 
         double[][] tmp = new double[m1.getSize()][m1.getSize()];
 
@@ -101,13 +80,22 @@ public abstract class AbstractMatrix implements Matrix{
             }
         }
 
-        mRes.setValue(tmp);
-        return mRes;
+        this.value = tmp;
+        return this;
     }
 
     @Override
     public Matrix transposition(Matrix m) {
-        return null;
+        double[][] tmp = new double[m.getSize()][m.getSize()];
+
+        for(int i = 0; i < m.getSize(); i++){
+            for(int j = 0; j < m.getSize(); j++){
+                tmp[j][i] = m.getValue()[i][j];
+            }
+        }
+
+        this.value = tmp;
+        return this;
     }
 
 }

@@ -1,6 +1,8 @@
 package Math.vector;
 
 
+import Math.exception.MathExceptions;
+
 public abstract class AbstractVector implements Vector {
     protected int size;
     protected double[] values;
@@ -25,7 +27,7 @@ public abstract class AbstractVector implements Vector {
         if(checkLengthInputValues(values)){
             this.values = values;
             this.size = values.length;
-        }
+        } else throw new MathExceptions();
     }
 
     @Override
