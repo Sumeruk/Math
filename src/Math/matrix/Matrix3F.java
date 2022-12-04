@@ -20,24 +20,28 @@ public class Matrix3F extends AbstractMatrix implements Matrix  {
 
     @Override
     protected boolean checkLengthInputValues(double[][] values) {
-        return values.length == 3 && values[0].length == 3;
+        return values.length == 3 && values[0].length == 3 && values[1].length == 3 && values[2].length == 3;
     }
 
     @Override
     public Vector multiplyMatrixOnVector(Matrix m1, Vector v1) {
-        Vector vRes = new Vector3F();
+        if (m1.getSize() != v1.getSize()) {
+            throw new MathExceptions();
+        } else {
+            Vector vRes = new Vector3F();
 
-        double[] tmp = new double[m1.getSize()];
+            double[] tmp = new double[m1.getSize()];
 
-        if (m1.getSize() == v1.getSize()) {
-            for (int i = 0; i < m1.getSize(); i++) {
-                for (int j = 0; j < m1.getSize(); j++) {
-                    tmp[i] = tmp[i] + m1.getValue()[i][j] * v1.getValues()[j];
+            if (m1.getSize() == v1.getSize()) {
+                for (int i = 0; i < m1.getSize(); i++) {
+                    for (int j = 0; j < m1.getSize(); j++) {
+                        tmp[i] = tmp[i] + m1.getValue()[i][j] * v1.getValues()[j];
+                    }
                 }
             }
-        }
 
-        vRes.setValues(tmp);
-        return vRes;
+            vRes.setValues(tmp);
+            return vRes;
+        }
     }
 }
