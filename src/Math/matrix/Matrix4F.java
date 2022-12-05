@@ -27,24 +27,21 @@ public class Matrix4F extends AbstractMatrix implements Matrix {
 
     @Override
     public Vector multiplyMatrixOnVector(Matrix m1, Vector v1) {
-        if (m1.getSize() != v1.getSize()) {
-            throw new MathExceptions();
-        } else {
-            Vector vRes = new Vector4F();
+        Vector vRes = new Vector4F();
 
-            double[] tmp = new double[m1.getSize()];
+        double[] tmp = new double[m1.getSize()];
 
-            if (m1.getSize() == v1.getSize()) {
-                for (int i = 0; i < m1.getSize(); i++) {
-                    for (int j = 0; j < m1.getSize(); j++) {
-                        tmp[i] = tmp[i] + m1.getValue()[i][j] * v1.getValues()[j];
-                    }
+        if (m1.getSize() == v1.getSize()) {
+            for (int i = 0; i < m1.getSize(); i++) {
+                for (int j = 0; j < m1.getSize(); j++) {
+                    tmp[i] = tmp[i] + m1.getValue()[i][j] * v1.getValues()[j];
                 }
             }
+        } else throw new MathExceptions();
 
-            vRes.setValues(tmp);
-            return vRes;
+        vRes.setValues(tmp);
+        return vRes;
 
-        }
     }
+
 }

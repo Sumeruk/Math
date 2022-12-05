@@ -40,7 +40,7 @@ public abstract class AbstractMatrix implements Matrix{
                     tmp[i][j] = m1.getValue()[i][j] + m2.getValue()[i][j];
                 }
             }
-        }
+        } else throw new MathExceptions();
         this.value = tmp;
         return this;
     }
@@ -56,7 +56,7 @@ public abstract class AbstractMatrix implements Matrix{
                     tmp[i][j] = m1.getValue()[i][j] - m2.getValue()[i][j];
                 }
             }
-        }
+        } else throw new MathExceptions();
 
         this.value = tmp;
         return this;
@@ -78,7 +78,7 @@ public abstract class AbstractMatrix implements Matrix{
                     }
                 }
             }
-        }
+        } else throw new MathExceptions();
 
         this.value = tmp;
         return this;
