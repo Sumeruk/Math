@@ -27,7 +27,8 @@ public class Vector3F extends AbstractVector implements Vector {
     public Vector vectorProduct(Vector v1, Vector v2){
         Vector vRes = new Vector3F();
         double[] tmp = new double[3];
-        if(v1.getSize() == v2.getSize()){
+        if(v1.getSize() == v2.getSize() && checkLengthInputValues(v1.getValues())
+                && checkLengthInputValues(v2.getValues())){
             tmp[0] = v1.getValues()[1] * v2.getValues()[2] - v1.getValues()[2] * v2.getValues()[1];
             tmp[1] = -(v1.getValues()[0] * v2.getValues()[2] - v1.getValues()[2] * v2.getValues()[0]);
             tmp[2] = v1.getValues()[0] * v2.getValues()[1] - v1.getValues()[1] * v2.getValues()[0];

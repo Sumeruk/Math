@@ -15,7 +15,7 @@ public interface Matrix {
 
     int getSize();
 
-    double[][] getValue();
+    double[][] getValues();
 
     void setValue(double[][] value);
 }

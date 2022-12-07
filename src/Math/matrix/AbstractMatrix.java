@@ -16,7 +16,7 @@ public abstract class AbstractMatrix implements Matrix{
     }
 
     @Override
-    public double[][] getValue() {
+    public double[][] getValues() {
         return this.value;
     }
 
@@ -37,7 +37,7 @@ public abstract class AbstractMatrix implements Matrix{
         if (m1.getSize() == m2.getSize()) {
             for (int i = 0; i < m1.getSize(); i++) {
                 for (int j = 0; j < m1.getSize(); j++) {
-                    tmp[i][j] = m1.getValue()[i][j] + m2.getValue()[i][j];
+                    tmp[i][j] = m1.getValues()[i][j] + m2.getValues()[i][j];
                 }
             }
         } else throw new MathExceptions();
@@ -53,7 +53,7 @@ public abstract class AbstractMatrix implements Matrix{
         if (m1.getSize() == m2.getSize()) {
             for (int i = 0; i < m1.getSize(); i++) {
                 for (int j = 0; j < m1.getSize(); j++) {
-                    tmp[i][j] = m1.getValue()[i][j] - m2.getValue()[i][j];
+                    tmp[i][j] = m1.getValues()[i][j] - m2.getValues()[i][j];
                 }
             }
         } else throw new MathExceptions();
@@ -74,7 +74,7 @@ public abstract class AbstractMatrix implements Matrix{
             for (int i = 0; i < m1.getSize(); i++) {
                 for (int j = 0; j < m1.getSize(); j++) {
                     for (int k = 0; k < m1.getSize(); k++) {
-                        tmp[i][j] += m1.getValue()[i][k] * m2.getValue()[k][j];
+                        tmp[i][j] += m1.getValues()[i][k] * m2.getValues()[k][j];
                     }
                 }
             }
@@ -90,7 +90,7 @@ public abstract class AbstractMatrix implements Matrix{
 
         for(int i = 0; i < m.getSize(); i++){
             for(int j = 0; j < m.getSize(); j++){
-                tmp[j][i] = m.getValue()[i][j];
+                tmp[j][i] = m.getValues()[i][j];
             }
         }
 

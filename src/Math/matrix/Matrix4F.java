@@ -34,7 +34,7 @@ public class Matrix4F extends AbstractMatrix implements Matrix {
         if (m1.getSize() == v1.getSize()) {
             for (int i = 0; i < m1.getSize(); i++) {
                 for (int j = 0; j < m1.getSize(); j++) {
-                    tmp[i] = tmp[i] + m1.getValue()[i][j] * v1.getValues()[j];
+                    tmp[i] = tmp[i] + m1.getValues()[i][j] * v1.getValues()[j];
                 }
             }
         } else throw new MathExceptions();

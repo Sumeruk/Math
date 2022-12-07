@@ -40,7 +40,7 @@ class AbstractMatrixTest {
     @Test
     void getValue() {
         Matrix m = new Matrix3F();
-        assertNull(m.getValue());
+        assertNull(m.getValues());
 
         double[][] matrix = new double[][]{
                 {1, 2, 3},
@@ -49,7 +49,7 @@ class AbstractMatrixTest {
         };
         m = new Matrix3F(matrix);
         for (int i = 0; i < matrix.length; i++) {
-            assertArrayEquals(matrix[i], m.getValue()[i]);
+            assertArrayEquals(matrix[i], m.getValues()[i]);
         }
 
         matrix = new double[][]{
@@ -60,7 +60,7 @@ class AbstractMatrixTest {
         };
         m = new Matrix4F(matrix);
         for (int i = 0; i < matrix.length; i++) {
-            assertArrayEquals(matrix[i], m.getValue()[i]);
+            assertArrayEquals(matrix[i], m.getValues()[i]);
         }
     }
 
@@ -75,7 +75,7 @@ class AbstractMatrixTest {
         m = new Matrix3F();
         m.setValue(matrix);
         for (int i = 0; i < matrix.length; i++) {
-            assertArrayEquals(matrix[i], m.getValue()[i]);
+            assertArrayEquals(matrix[i], m.getValues()[i]);
         }
 
         matrix = new double[][]{
@@ -87,7 +87,7 @@ class AbstractMatrixTest {
         m = new Matrix4F();
         m.setValue(matrix);
         for (int i = 0; i < matrix.length; i++) {
-            assertArrayEquals(matrix[i], m.getValue()[i]);
+            assertArrayEquals(matrix[i], m.getValues()[i]);
         }
 
         MathExceptions thrown = Assertions.assertThrows(MathExceptions.class, () -> {
@@ -185,7 +185,7 @@ class AbstractMatrixTest {
         matrix1 = matrix1.plusMatrix(matrix1, matrix2);
 
         for (int i = 0; i < 3; i++) {
-            assertArrayEquals(expected[i], matrix1.getValue()[i], 0.000001);
+            assertArrayEquals(expected[i], matrix1.getValues()[i], 0.000001);
         }
 
         //for 4matrix
@@ -216,7 +216,7 @@ class AbstractMatrixTest {
         matrix1 = matrix1.plusMatrix(matrix1, matrix2);
 
         for (int i = 0; i < 4; i++) {
-            assertArrayEquals(expected[i], matrix1.getValue()[i], 0.000001);
+            assertArrayEquals(expected[i], matrix1.getValues()[i], 0.000001);
         }
 
 
@@ -270,7 +270,7 @@ class AbstractMatrixTest {
         matrix1 = matrix1.minusMatrix(matrix1, matrix2);
 
         for (int i = 0; i < 3; i++) {
-            assertArrayEquals(expected[i], matrix1.getValue()[i], 0.000001);
+            assertArrayEquals(expected[i], matrix1.getValues()[i], 0.000001);
         }
 
 
@@ -302,7 +302,7 @@ class AbstractMatrixTest {
         matrix2 = matrix1.minusMatrix(matrix1, matrix2);
 
         for (int i = 0; i < 4; i++) {
-            assertArrayEquals(expected[i], matrix2.getValue()[i], 0.000001);
+            assertArrayEquals(expected[i], matrix2.getValues()[i], 0.000001);
         }
     }
 
@@ -375,7 +375,7 @@ class AbstractMatrixTest {
         matrix1 = matrix1.multiplyTwoMatrix(matrix1, matrix2);
 
         for (int i = 0; i < 3; i++) {
-            assertArrayEquals(expected[i], matrix1.getValue()[i], 0.000001);
+            assertArrayEquals(expected[i], matrix1.getValues()[i], 0.000001);
         }
 
         expected = new double[][]{
@@ -405,7 +405,7 @@ class AbstractMatrixTest {
         matrix2 = matrix1.multiplyTwoMatrix(matrix1, matrix2);
 
         for (int i = 0; i < 4; i++) {
-            assertArrayEquals(expected[i], matrix2.getValue()[i], 0.000001);
+            assertArrayEquals(expected[i], matrix2.getValues()[i], 0.000001);
         }
 
 
@@ -430,7 +430,7 @@ class AbstractMatrixTest {
         matrix1 = matrix1.transposition(matrix1);
 
         for (int i = 0; i < matrix1.getSize(); i++) {
-            assertArrayEquals(expected[i], matrix1.getValue()[i], 0.000001);
+            assertArrayEquals(expected[i], matrix1.getValues()[i], 0.000001);
         }
 
         expected = new double[][]{
@@ -452,7 +452,7 @@ class AbstractMatrixTest {
         matrix1 = matrix1.transposition(matrix1);
 
         for (int i = 0; i < matrix1.getSize(); i++) {
-            assertArrayEquals(expected[i], matrix1.getValue()[i], 0.000001);
+            assertArrayEquals(expected[i], matrix1.getValues()[i], 0.000001);
         }
     }
 }

@@ -1,6 +1,5 @@
 package Math.vector;
 
-
 import Math.exception.MathExceptions;
 
 public abstract class AbstractVector implements Vector {
@@ -41,7 +40,7 @@ public abstract class AbstractVector implements Vector {
             }
 
             this.values = tmp;
-        }
+        } else throw new MathExceptions();
         return this;
     }
 
@@ -52,11 +51,11 @@ public abstract class AbstractVector implements Vector {
             double[] tmp = new double[v1.getSize()];
 
             for (int i = 0; i < v1.getSize(); i++) {
-                tmp[i] = v1.getValues()[i] + v2.getValues()[i];
+                tmp[i] = v1.getValues()[i] - v2.getValues()[i];
             }
 
             this.values = tmp;
-        }
+        } else throw new MathExceptions();
         return this;
     }
 
@@ -121,10 +120,7 @@ public abstract class AbstractVector implements Vector {
             for (int i = 0; i < v1.getSize(); i++){
                 tmp = tmp + v1.getValues()[i] * v2.getValues()[i];
             }
-        }
+        } else throw new MathExceptions();
         return tmp;
     }
-
-
-
 }
