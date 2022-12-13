@@ -7,7 +7,7 @@ public class Vector4F extends AbstractVector implements Vector {
     public Vector4F() {
     }
 
-    public Vector4F(double[] values) {
+    public Vector4F(float[] values) {
         if (checkLengthInputValues(values)) {
             super.values = values;
             super.size = values.length;
@@ -15,7 +15,7 @@ public class Vector4F extends AbstractVector implements Vector {
     }
 
     public Vector4F(int v1, int v2, int v3, int v4) {
-        super.values = new double[4];
+        super.values = new float[4];
 
         super.size = 4;
 
@@ -31,7 +31,7 @@ public class Vector4F extends AbstractVector implements Vector {
     }
 
     @Override
-    protected boolean checkLengthInputValues(double[] values) {
+    protected boolean checkLengthInputValues(float[] values) {
         return values.length == 4;
     }
 

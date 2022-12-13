@@ -14,8 +14,8 @@ class Vector3FTest {
     @Test
     void vectorProduct() {
         MathExceptions thrown = Assertions.assertThrows(MathExceptions.class, () -> {
-            double[] vectorFirst = new double[]{-3.333, 0.898};
-            double[] vectorSecond = new double[]{-4.21, 2.34, 1};
+            float[] vectorFirst = new float[]{-3.333f, 0.898f};
+            float[] vectorSecond = new float[]{-4.21f, 2.34f, 1};
             Vector v1 = new Vector2F(vectorFirst);
             Vector v2 = new Vector3F(vectorSecond);
             v1.vectorProduct(v1, v2);
@@ -23,20 +23,20 @@ class Vector3FTest {
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 
         thrown = Assertions.assertThrows(MathExceptions.class, () -> {
-            double[] vectorFirst = new double[]{-3.333, 0.898};
-            double[] vectorSecond = new double[]{-4.21, 2.34};
+            float[] vectorFirst = new float[]{-3.333f, 0.898f};
+            float[] vectorSecond = new float[]{-4.21f, 2.34f};
             Vector v1 = new Vector2F(vectorFirst);
             Vector v2 = new Vector2F(vectorSecond);
             v1.vectorProduct(v1, v2);
         });
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 
-        double[] vectorFirst = new double[]{-3.333, 0.898, 1.87};
-        double[] vectorSecond = new double[]{-4.21, 2.34, 0.22};
+        float[] vectorFirst = new float[]{-3.333f, 0.898f, 1.87f};
+        float[] vectorSecond = new float[]{-4.21f, 2.34f, 0.22f};
         Vector v1 = new Vector3F(vectorFirst);
         Vector v2 = new Vector3F(vectorSecond);
 
-        double[] expected = new double[]{-4.17824, -7.13944, -4.01864};
-        assertArrayEquals(expected,v1.vectorProduct(v1, v2).getValues(), 0.000001);
+        float[] expected = new float[]{-4.17824f, -7.13944f, -4.01864f};
+        assertArrayEquals(expected,v1.vectorProduct(v1, v2).getValues(), 0.000001f);
     }
 }

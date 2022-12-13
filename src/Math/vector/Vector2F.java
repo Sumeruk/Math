@@ -4,7 +4,7 @@ import Math.exception.MathExceptions;
 
 public class Vector2F extends AbstractVector implements Vector {
 
-    public Vector2F(double[] values) {
+    public Vector2F(float[] values) {
         if (checkLengthInputValues(values)) {
             super.values = values;
             super.size = values.length;
@@ -12,7 +12,7 @@ public class Vector2F extends AbstractVector implements Vector {
     }
 
     public Vector2F(int v1, int v2) {
-        super.values = new double[2];
+        super.values = new float[2];
 
         super.size = 2;
 
@@ -29,7 +29,7 @@ public class Vector2F extends AbstractVector implements Vector {
     }
 
     @Override
-    protected boolean checkLengthInputValues(double[] values) {
+    protected boolean checkLengthInputValues(float[] values) {
         return values.length == 2;
     }
 }

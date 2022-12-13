@@ -19,14 +19,14 @@ class Matrix4FTest {
     void testInputValuesExpectedException() {
 
         MathExceptions thrown = Assertions.assertThrows(MathExceptions.class, () -> {
-            double[][] expected = new double[][]{{1, 2, 3},
+            float[][] expected = new float[][]{{1, 2, 3},
                     {4, 5, 6}};
             Matrix m = new Matrix4F(expected);
         });
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 
         thrown = Assertions.assertThrows(MathExceptions.class, () -> {
-            double[][] expected = new double[][]{{1, 2, 3},
+            float[][] expected = new float[][]{{1, 2, 3},
                     {4, 5},
                     {6, 7, 8}};
             Matrix m = new Matrix4F(expected);
@@ -34,7 +34,7 @@ class Matrix4FTest {
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 
         thrown = Assertions.assertThrows(MathExceptions.class, () -> {
-            double[][] expected = new double[][]{{1, 2, 3},
+            float[][] expected = new float[][]{{1, 2, 3},
                     {4, 5, 6},
                     {6, 7}};
             Matrix m = new Matrix4F(expected);
@@ -42,7 +42,7 @@ class Matrix4FTest {
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 
         thrown = Assertions.assertThrows(MathExceptions.class, () -> {
-            double[][] expected = new double[0][0];
+            float[][] expected = new float[0][0];
             Matrix m = new Matrix4F(expected);
         });
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
@@ -52,39 +52,40 @@ class Matrix4FTest {
     @Test
     void testMultiplyMatrixOnVector() {
 
-        double[] expected = new double[]{62.5405,
-                409.7973,
-                116.976,
+        float[] expected = new float[]{62.5405f,
+                409.7973f,
+                116.976f,
                 107};
 
-        double[][] m = {{0, -2, 3.009, 11},
-                {4.9, 5, -0.0006, 77},
-                {7, -0.008, 9, 12.5},
+        float[][] m = {{0, -2, 3.009f, 11},
+                {4.9f, 5, -0.0006f, 77},
+                {7, -0.008f, 9, 12.5f},
                 {10, 11, 12, 0}
         };
-        double[] v = {2, 3, 4.5, 5};
+        float[] v = {2, 3, 4.5f, 5};
 
         Matrix matrix = new Matrix4F(m);
         Vector vector = new Vector4F(v);
 
         vector = matrix.multiplyMatrixOnVector(matrix, vector);
 
-        assertArrayEquals(expected, vector.getValues(), 0.000001);
+        float exp = 0.000001f;
+        assertArrayEquals(expected, vector.getValues(), exp);
 
-        v = new double[]{0, 0, 0, 0};
+        v = new float[]{0, 0, 0, 0};
         vector = new Vector4F(v);
         vector = matrix.multiplyMatrixOnVector(matrix, vector);
         vector.getValues();
-        expected = new double[]{0, 0, 0, 0};
+        expected = new float[]{0, 0, 0, 0};
         assertArrayEquals(expected, vector.getValues());
 
         MathExceptions thrown = Assertions.assertThrows(MathExceptions.class, () -> {
-            double[][] mInput = {{1, 2, 3},
+            float[][] mInput = {{1, 2, 3},
                     {4, 5, 6},
                     {7, 8, 9},
                     {10, 11, 12}
             };
-            double[] vInput = {2, 3};
+            float[] vInput = {2, 3};
 
             Matrix mIn = new Matrix4F(mInput);
             Vector vIn = new Vector2F(vInput);
@@ -94,12 +95,12 @@ class Matrix4FTest {
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 
         thrown = Assertions.assertThrows(MathExceptions.class, () -> {
-            double[][] mInput = {{1, 2, 3},
+            float[][] mInput = {{1, 2, 3},
                     {4, 5, 6},
                     {7, 8, 9},
                     {10, 11, 12}
             };
-            double[] vInput = {2, 3, 4};
+            float[] vInput = {2, 3, 4};
 
             Matrix mIn = new Matrix4F(mInput);
             Vector vIn = new Vector3F(vInput);

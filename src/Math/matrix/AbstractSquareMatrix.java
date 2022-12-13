@@ -3,12 +3,13 @@ package Math.matrix;
 import Math.exception.MathExceptions;
 import Math.vector.Vector;
 
+// todo переделать названия
 
-public abstract class AbstractMatrix implements Matrix{
-    double[][] value;
+public abstract class AbstractSquareMatrix implements Matrix{
+    float[][] value;
     int size = 0;
 
-    protected abstract boolean checkLengthInputValues(double[][] values);
+    protected abstract boolean checkLengthInputValues(float[][] values);
 
     @Override
     public int getSize() {
@@ -16,12 +17,12 @@ public abstract class AbstractMatrix implements Matrix{
     }
 
     @Override
-    public double[][] getValues() {
+    public float[][] getValues() {
         return this.value;
     }
 
     @Override
-    public void setValue(double[][] value) {
+    public void setValue(float[][] value) {
 
         if(checkLengthInputValues(value)) {
             this.value = value;
@@ -32,7 +33,7 @@ public abstract class AbstractMatrix implements Matrix{
     @Override
     public Matrix plusMatrix(Matrix m1, Matrix m2) {
 
-        double[][] tmp = new double[m1.getSize()][m1.getSize()];
+        float[][] tmp = new float[m1.getSize()][m1.getSize()];
 
         if (m1.getSize() == m2.getSize()) {
             for (int i = 0; i < m1.getSize(); i++) {
@@ -48,7 +49,7 @@ public abstract class AbstractMatrix implements Matrix{
     @Override
     public Matrix minusMatrix(Matrix m1, Matrix m2) {
 
-        double[][] tmp = new double[m1.getSize()][m1.getSize()];
+        float[][] tmp = new float[m1.getSize()][m1.getSize()];
 
         if (m1.getSize() == m2.getSize()) {
             for (int i = 0; i < m1.getSize(); i++) {
@@ -68,7 +69,7 @@ public abstract class AbstractMatrix implements Matrix{
     @Override
     public Matrix multiplyTwoMatrix(Matrix m1, Matrix m2) {
 
-        double[][] tmp = new double[m1.getSize()][m1.getSize()];
+        float[][] tmp = new float[m1.getSize()][m1.getSize()];
 
         if (m1.getSize() == m2.getSize()) {
             for (int i = 0; i < m1.getSize(); i++) {
@@ -86,7 +87,7 @@ public abstract class AbstractMatrix implements Matrix{
 
     @Override
     public Matrix transposition(Matrix m) {
-        double[][] tmp = new double[m.getSize()][m.getSize()];
+        float[][] tmp = new float[m.getSize()][m.getSize()];
 
         for(int i = 0; i < m.getSize(); i++){
             for(int j = 0; j < m.getSize(); j++){
