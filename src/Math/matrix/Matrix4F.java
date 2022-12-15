@@ -49,7 +49,7 @@ public class Matrix4F extends AbstractSquareMatrix implements Matrix {
 
 
     @Override
-    public Vector productMatrixOnVector(final Matrix m1,final Vector v1) {
+    public Vector productMatrixOnVector(final Matrix m1, final Vector v1) {
         Vector vRes = new Vector4F();
 
         float[] tmp = super.getMatrixAfterProductMatrixOnVector(m1, v1);

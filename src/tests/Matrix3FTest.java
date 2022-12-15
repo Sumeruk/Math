@@ -22,7 +22,7 @@ class Matrix3FTest {
                     {4, 5, 6}};
             Matrix m = new Matrix3F(expected);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
         thrown = Assertions.assertThrows(MathExceptions.class, () -> {
             float[][] expected = new float[][]{{1, 2, 3},
@@ -30,7 +30,7 @@ class Matrix3FTest {
                     {6, 7, 8}};
             Matrix m = new Matrix3F(expected);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
         thrown = Assertions.assertThrows(MathExceptions.class, () -> {
             float[][] expected = new float[][]{{1, 2, 3},
@@ -38,13 +38,13 @@ class Matrix3FTest {
                     {6, 7}};
             Matrix m = new Matrix3F(expected);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
         thrown = Assertions.assertThrows(MathExceptions.class, () -> {
             float[][] expected = new float[0][0];
             Matrix m = new Matrix3F(expected);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
     }
 
@@ -83,7 +83,7 @@ class Matrix3FTest {
 
             Vector vectorRes = matrix.productMatrixOnVector(matrix, vector);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
         thrown = Assertions.assertThrows(MathExceptions.class, () -> {
             float[][] mInput = {{1, 2, 3},
@@ -96,7 +96,7 @@ class Matrix3FTest {
 
             Vector vectorRes = matrix.productMatrixOnVector(matrix, vector);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
 
 

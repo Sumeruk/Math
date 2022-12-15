@@ -14,7 +14,7 @@ class AbstractSquareMatrixTest {
     private final float exp = (float) 0.00001;
 
     @Test
-    void getSize() {
+    void testGetSize() {
         Matrix m = new Matrix3F();
         assertEquals(0, m.getSize());
 
@@ -40,7 +40,7 @@ class AbstractSquareMatrixTest {
     }
 
     @Test
-    void getValue() {
+    void testGetValue() {
         Matrix m = new Matrix3F();
         assertNull(m.getValues());
 
@@ -67,7 +67,7 @@ class AbstractSquareMatrixTest {
     }
 
     @Test
-    void setValue() {
+    void testSetValue() {
         Matrix m;
         float[][] matrix = new float[][]{
                 {1, 2, 3},
@@ -100,7 +100,7 @@ class AbstractSquareMatrixTest {
             Matrix m1 = new Matrix3F();
             m1.setValue(matrixInput);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
         thrown = Assertions.assertThrows(MathExceptions.class, () -> {
             float[][] matrixInput = new float[][]{
@@ -113,12 +113,12 @@ class AbstractSquareMatrixTest {
             Matrix m1 = new Matrix4F();
             m1.setValue(matrixInput);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
     }
 
     @Test
-    void plusMatrix() {
+    void testSumMatrix() {
 
         //for 3matrix
         MathExceptions thrown = Assertions.assertThrows(MathExceptions.class, () -> {
@@ -139,7 +139,7 @@ class AbstractSquareMatrixTest {
 
             m3.sumMatrix(m3, m4);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
         //for 4matrix
         thrown = Assertions.assertThrows(MathExceptions.class, () -> {
@@ -160,7 +160,7 @@ class AbstractSquareMatrixTest {
 
             m4.sumMatrix(m3, m4);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
         //for 3matrix
         float[][] expected = new float[][]{
@@ -225,7 +225,7 @@ class AbstractSquareMatrixTest {
     }
 
     @Test
-    void minusMatrix() {
+    void testMinusMatrix() {
         //for 3matrix
         MathExceptions thrown = Assertions.assertThrows(MathExceptions.class, () -> {
             float[][] matrix3Input = new float[][]{
@@ -245,7 +245,7 @@ class AbstractSquareMatrixTest {
 
             m3.sumMatrix(m3, m4);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
         //for 3matrix
         float[][] expected = new float[][]{
@@ -309,7 +309,7 @@ class AbstractSquareMatrixTest {
     }
 
     @Test
-    void multiplyTwoMatrix() {
+    void testProductTwoMatrix() {
         //for 3matrix
         MathExceptions thrown = Assertions.assertThrows(MathExceptions.class, () -> {
             float[][] matrix3Input = new float[][]{
@@ -329,7 +329,7 @@ class AbstractSquareMatrixTest {
 
             m3.sumMatrix(m3, m4);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
         //for 4matrix
         thrown = Assertions.assertThrows(MathExceptions.class, () -> {
@@ -350,7 +350,7 @@ class AbstractSquareMatrixTest {
 
             m4.sumMatrix(m3, m4);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
         //for 3matrix
         float[][] expected = new float[][]{
@@ -382,7 +382,7 @@ class AbstractSquareMatrixTest {
         expected = new float[][]{
                 {6.925f, 53.214f, 1.85f, -12.11f},
                 {28.65f, 104.024f, 7.9f, -11.16f},
-                {53.64f, -164.124f, 1.262f, 12.7f},
+                {53.64f, -164.12401f, 1.262f, 12.7f},
                 {-13.32f, 39.97332f, 0, -19.5138f}
         };
 
@@ -413,7 +413,7 @@ class AbstractSquareMatrixTest {
     }
 
     @Test
-    void transposition() {
+    void testTransposition() {
         float[][] expected = new float[][]{
                 {1.4f, 4, 7},
                 {2.5f, 5, 8},

@@ -6,7 +6,7 @@ import Math.vector.Vector3F;
 
 // todo переделать названия
 
-public abstract class AbstractSquareMatrix implements Matrix{
+public abstract class AbstractSquareMatrix implements Matrix {
     float[][] value;
     int size = 0;
 
@@ -31,7 +31,7 @@ public abstract class AbstractSquareMatrix implements Matrix{
     @Override
     public void setValue(float[][] value) {
 
-        if(checkLengthInputValues(value)) {
+        if (checkLengthInputValues(value)) {
             this.value = value;
             this.size = value.length;
         } else throw new MathExceptions();
@@ -73,7 +73,7 @@ public abstract class AbstractSquareMatrix implements Matrix{
     @Override
     public abstract Vector productMatrixOnVector(final Matrix m1, final Vector v1);
 
-    protected float[] getMatrixAfterProductMatrixOnVector(final Matrix m1, final Vector v1){
+    protected float[] getMatrixAfterProductMatrixOnVector(final Matrix m1, final Vector v1) {
 
         float[] tmp = new float[m1.getSize()];
 
@@ -113,8 +113,8 @@ public abstract class AbstractSquareMatrix implements Matrix{
     public Matrix transpose(final Matrix m) {
         float[][] tmp = new float[m.getSize()][m.getSize()];
 
-        for(int i = 0; i < m.getSize(); i++){
-            for(int j = 0; j < m.getSize(); j++){
+        for (int i = 0; i < m.getSize(); i++) {
+            for (int j = 0; j < m.getSize(); j++) {
                 tmp[j][i] = m.getValues()[i][j];
             }
         }

@@ -22,8 +22,8 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public void setValues(final float[] values){
-        if(checkLengthInputValues(values)){
+    public void setValues(final float[] values) {
+        if (checkLengthInputValues(values)) {
             this.values = values;
             this.size = values.length;
         } else throw new MathExceptions();
@@ -74,7 +74,7 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public Vector divisionVectorOnScalar(final Vector v1,final float scalar){
+    public Vector divisionVectorOnScalar(final Vector v1, final float scalar) {
 
         float[] tmp = new float[v1.getSize()];
 
@@ -94,7 +94,7 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public float vectorLength(final Vector v1){
+    public float vectorLength(final Vector v1) {
         float tmp = 0;
 
         for (int i = 0; i < v1.getSize(); i++) {
@@ -105,12 +105,12 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public Vector vectorNormalization(final Vector v1){
+    public Vector vectorNormalization(final Vector v1) {
 
         float[] tmp = new float[v1.getSize()];
 
         float length = v1.vectorLength(v1);
-        for (int i = 0; i < v1.getSize(); i++){
+        for (int i = 0; i < v1.getSize(); i++) {
             tmp[i] = v1.getValues()[i] / length;
         }
 
@@ -120,10 +120,10 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public float vectorDotProduct(final Vector v1, final Vector v2){
+    public float vectorDotProduct(final Vector v1, final Vector v2) {
         float tmp = 0;
-        if(v1.getSize() == v2.getSize()){
-            for (int i = 0; i < v1.getSize(); i++){
+        if (v1.getSize() == v2.getSize()) {
+            for (int i = 0; i < v1.getSize(); i++) {
                 tmp = tmp + v1.getValues()[i] * v2.getValues()[i];
             }
         } else throw new MathExceptions();

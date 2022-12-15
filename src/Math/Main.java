@@ -12,24 +12,5 @@ public class Main {
 
     public static void main(String[] args) {
 
-        }
-
-
-//
-//
-//        Vector vRes = new Vector2F();
-//        vRes = vRes.sumVectors(v1, v2);
-//        System.out.println(Arrays.toString(vRes.getValues()));
-//
-//        vRes = vRes.productVectorOnScalar(v1, -0.15);
-//        System.out.println(Arrays.toString(vRes.getValues()));
-//
-//        vRes = vRes.divisionVectorOnScalar(v1, 2);
-//        System.out.println(Arrays.toString(vRes.getValues()));
-//
-//        vRes = vRes.vectorNormalization(v2);
-//        System.out.println(Arrays.toString(vRes.getValues()));
-//
-//        System.out.println(vRes.vectorDotProduct(v1, v2));
-    
+    }
 }

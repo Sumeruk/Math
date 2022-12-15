@@ -24,15 +24,15 @@ public class Vector3F extends AbstractVector implements Vector {
         super.values[2] = v3;
     }
 
-    public Vector vectorCrossProduct(Vector v1, Vector v2){
+    public Vector vectorCrossProduct(Vector v1, Vector v2) {
         Vector vRes = new Vector3F();
         float[] tmp = new float[3];
-        if(v1.getSize() == v2.getSize() && checkLengthInputValues(v1.getValues())
-                && checkLengthInputValues(v2.getValues())){
+        if (v1.getSize() == v2.getSize() && checkLengthInputValues(v1.getValues())
+                && checkLengthInputValues(v2.getValues())) {
             tmp[0] = v1.getValues()[1] * v2.getValues()[2] - v1.getValues()[2] * v2.getValues()[1];
             tmp[1] = -(v1.getValues()[0] * v2.getValues()[2] - v1.getValues()[2] * v2.getValues()[0]);
             tmp[2] = v1.getValues()[0] * v2.getValues()[1] - v1.getValues()[1] * v2.getValues()[0];
-        }
+        } else throw new MathExceptions();
         vRes.setValues(tmp);
         return vRes;
     }

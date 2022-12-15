@@ -15,7 +15,7 @@ class AbstractVectorTest {
     private final float exp = (float) 0.00001;
 
     @Test
-    void getValues() {
+    void testgetValues() {
 
         float[] vectorValue = new float[]{1, 2};
         Vector vector = new Vector2F(vectorValue);
@@ -34,7 +34,7 @@ class AbstractVectorTest {
     }
 
     @Test
-    void getSize() {
+    void testgetSize() {
         float[] vectorValue = new float[]{1, 2};
         Vector vector = new Vector2F(vectorValue);
         assertEquals(2, vector.getSize());
@@ -53,7 +53,7 @@ class AbstractVectorTest {
     }
 
     @Test
-    void setValues() {
+    void testsetValues() {
 
         float[] vectorValue = new float[]{1, 2};
         Vector vector = new Vector2F();
@@ -75,12 +75,12 @@ class AbstractVectorTest {
             Vector v = new Vector3F();
             v.setValues(matrixInput);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
 
     }
 
     @Test
-    void plusTwoVectors() {
+    void testSumVectors() {
 
         float[] vectorValueFirst = new float[]{-3.333f, 0.898f};
         float[] vectorValueSecond = new float[]{-4.21f, 2.34f};
@@ -99,11 +99,11 @@ class AbstractVectorTest {
             Vector v2 = new Vector3F(vectorSecond);
             v1.sumVectors(v1, v2);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
     }
 
     @Test
-    void minusTwoVectors() {
+    void testMinusTwoVectors() {
         float[] vectorValueFirst = new float[]{-3.333f, 0.898f};
         float[] vectorValueSecond = new float[]{-4.21f, 2.34f};
         Vector vector1 = new Vector2F(vectorValueFirst);
@@ -120,11 +120,11 @@ class AbstractVectorTest {
             Vector v2 = new Vector3F(vectorSecond);
             v1.minusTwoVectors(v1, v2);
         });
-        Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
+        Assertions.assertEquals("Error in values!", thrown.getMessage());
     }
 
     @Test
-    void multiplyVectorOnScalar() {
+    void testProductVectorOnScalar() {
 
         float[] vectorValueFirst = new float[]{-3.333f, 0.898f};
         Vector vector1 = new Vector2F(vectorValueFirst);
@@ -137,12 +137,27 @@ class AbstractVectorTest {
     }
 
     @Test
-    void divisionVectorOnScalar() {
+    void testDivisionVectorOnScalar() {
+
+        MathExceptions thrown = Assertions.assertThrows(MathExceptions.class, () -> {
+            float[] vectorFirst = new float[]{-3.333f, 0.898f};
+            float scalar = 0;
+            Vector v1 = new Vector2F(vectorFirst);
+            v1.divisionVectorOnScalar(v1, scalar);
+        });
+
+        float[] vectorValueFirst = new float[]{3.333f, 0.898f};
+        Vector vector1 = new Vector2F(vectorValueFirst);
+        float scalar = -0.18f;
+
+        float[] expected = new float[]{-18.516666f, -4.98889f};
+        vector1 = vector1.divisionVectorOnScalar(vector1, scalar);
+        assertArrayEquals(expected, vector1.getValues(), exp);
 
     }
 
     @Test
-    void vectorLength() {
+    void testVectorLength() {
 
         float[] vectorValue = new float[]{-3.3f, 0.89f};
         Vector vector = new Vector2F(vectorValue);
@@ -163,7 +178,7 @@ class AbstractVectorTest {
     }
 
     @Test
-    void vectorNormalization() {
+    void testVectorNormalization() {
 
         float[] vectorValue = new float[]{-1,0.66f};
         Vector vector = new Vector2F(vectorValue);
