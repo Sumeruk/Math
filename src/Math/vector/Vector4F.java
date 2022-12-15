@@ -26,7 +26,7 @@ public class Vector4F extends AbstractVector implements Vector {
     }
 
     @Override
-    public Vector vectorProduct(Vector v1, Vector v2) {
+    public Vector vectorCrossProduct(Vector v1, Vector v2) {
         return null;
     }
 

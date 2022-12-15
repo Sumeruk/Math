@@ -2,7 +2,6 @@ package tests;
 
 import Math.exception.MathExceptions;
 import Math.matrix.Matrix;
-import Math.matrix.Matrix3F;
 import Math.matrix.Matrix4F;
 import Math.vector.Vector;
 import Math.vector.Vector2F;
@@ -67,14 +66,14 @@ class Matrix4FTest {
         Matrix matrix = new Matrix4F(m);
         Vector vector = new Vector4F(v);
 
-        vector = matrix.multiplyMatrixOnVector(matrix, vector);
+        vector = matrix.productMatrixOnVector(matrix, vector);
 
         float exp = 0.000001f;
         assertArrayEquals(expected, vector.getValues(), exp);
 
         v = new float[]{0, 0, 0, 0};
         vector = new Vector4F(v);
-        vector = matrix.multiplyMatrixOnVector(matrix, vector);
+        vector = matrix.productMatrixOnVector(matrix, vector);
         vector.getValues();
         expected = new float[]{0, 0, 0, 0};
         assertArrayEquals(expected, vector.getValues());
@@ -90,7 +89,7 @@ class Matrix4FTest {
             Matrix mIn = new Matrix4F(mInput);
             Vector vIn = new Vector2F(vInput);
 
-            Vector vectorRes = mIn.multiplyMatrixOnVector(mIn, vIn);
+            Vector vectorRes = mIn.productMatrixOnVector(mIn, vIn);
         });
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 
@@ -105,7 +104,7 @@ class Matrix4FTest {
             Matrix mIn = new Matrix4F(mInput);
             Vector vIn = new Vector3F(vInput);
 
-            Vector vectorRes = mIn.multiplyMatrixOnVector(mIn, vIn);
+            Vector vectorRes = mIn.productMatrixOnVector(mIn, vIn);
         });
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
     }

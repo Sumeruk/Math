@@ -19,25 +19,38 @@ public class Matrix3F extends AbstractSquareMatrix implements Matrix {
     }
 
     @Override
-    protected boolean checkLengthInputValues(float[][] values) {
+    public void setZeroMatrix() {
+        super.size = 3;
+        super.value = new float[][]{
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
+        };
+    }
+
+    @Override
+    public void setSingleMatrix() {
+        super.size = 3;
+        super.value = new float[][]{
+                {1, 0, 0},
+                {0, 1, 0},
+                {0, 0, 1}
+        };
+
+    }
+
+    @Override
+    protected boolean checkLengthInputValues(final float[][] values) {
         return values.length == 3 && values[0].length == 3 && values[1].length == 3 && values[2].length == 3;
     }
 
     // todo все в абстракцию
     @Override
-    public Vector multiplyMatrixOnVector(Matrix m1, Vector v1) {
+    public Vector productMatrixOnVector(final Matrix m1, final Vector v1) {
 
         Vector vRes = new Vector3F();
 
-        float[] tmp = new float[m1.getSize()];
-
-        if (m1.getSize() == v1.getSize()) {
-            for (int i = 0; i < m1.getSize(); i++) {
-                for (int j = 0; j < m1.getSize(); j++) {
-                    tmp[i] = (float) (tmp[i] + m1.getValues()[i][j] * v1.getValues()[j]);
-                }
-            }
-        } else throw new MathExceptions();
+        float[] tmp = super.getMatrixAfterProductMatrixOnVector(m1, v1);
 
         vRes.setValues(tmp);
         return vRes;

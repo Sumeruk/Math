@@ -2,12 +2,19 @@ package Math.matrix;
 
 import Math.exception.MathExceptions;
 import Math.vector.Vector;
+import Math.vector.Vector3F;
 
 // todo переделать названия
 
 public abstract class AbstractSquareMatrix implements Matrix{
     float[][] value;
     int size = 0;
+
+    @Override
+    public abstract void setZeroMatrix();
+
+    @Override
+    public abstract void setSingleMatrix();
 
     protected abstract boolean checkLengthInputValues(float[][] values);
 
@@ -31,7 +38,7 @@ public abstract class AbstractSquareMatrix implements Matrix{
     }
 
     @Override
-    public Matrix plusMatrix(Matrix m1, Matrix m2) {
+    public Matrix sumMatrix(final Matrix m1, final Matrix m2) {
 
         float[][] tmp = new float[m1.getSize()][m1.getSize()];
 
@@ -47,7 +54,7 @@ public abstract class AbstractSquareMatrix implements Matrix{
     }
 
     @Override
-    public Matrix minusMatrix(Matrix m1, Matrix m2) {
+    public Matrix minusMatrix(final Matrix m1, final Matrix m2) {
 
         float[][] tmp = new float[m1.getSize()][m1.getSize()];
 
@@ -64,10 +71,27 @@ public abstract class AbstractSquareMatrix implements Matrix{
     }
 
     @Override
-    public abstract Vector multiplyMatrixOnVector(Matrix m1, Vector v1);
+    public abstract Vector productMatrixOnVector(final Matrix m1, final Vector v1);
+
+    protected float[] getMatrixAfterProductMatrixOnVector(final Matrix m1, final Vector v1){
+
+        float[] tmp = new float[m1.getSize()];
+
+        if (m1.getSize() == v1.getSize()) {
+            for (int i = 0; i < m1.getSize(); i++) {
+                for (int j = 0; j < m1.getSize(); j++) {
+                    tmp[i] = tmp[i] + m1.getValues()[i][j] * v1.getValues()[j];
+                }
+            }
+        } else throw new MathExceptions();
+
+        return tmp;
+
+    }
+
 
     @Override
-    public Matrix multiplyTwoMatrix(Matrix m1, Matrix m2) {
+    public Matrix productTwoMatrix(final Matrix m1, final Matrix m2) {
 
         float[][] tmp = new float[m1.getSize()][m1.getSize()];
 
@@ -86,7 +110,7 @@ public abstract class AbstractSquareMatrix implements Matrix{
     }
 
     @Override
-    public Matrix transposition(Matrix m) {
+    public Matrix transpose(final Matrix m) {
         float[][] tmp = new float[m.getSize()][m.getSize()];
 
         for(int i = 0; i < m.getSize(); i++){

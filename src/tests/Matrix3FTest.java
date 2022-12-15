@@ -58,7 +58,7 @@ class Matrix3FTest {
         Matrix m1 = new Matrix3F(m);
         Vector v1 = new Vector3F(v);
 
-        Vector vectorResult = m1.multiplyMatrixOnVector(m1, v1);
+        Vector vectorResult = m1.productMatrixOnVector(m1, v1);
         float[] actual = vectorResult.getValues();
         float[] expected = {20, 47, 74};
 
@@ -67,7 +67,7 @@ class Matrix3FTest {
 
         v = new float[]{0, 0, 0};
         v1 = new Vector3F(v);
-        vectorResult = m1.multiplyMatrixOnVector(m1, v1);
+        vectorResult = m1.productMatrixOnVector(m1, v1);
         actual = vectorResult.getValues();
         expected = new float[]{0, 0, 0};
         assertArrayEquals(expected, actual);
@@ -81,7 +81,7 @@ class Matrix3FTest {
             Matrix matrix = new Matrix3F(mInput);
             Vector vector = new Vector2F(vInput);
 
-            Vector vectorRes = matrix.multiplyMatrixOnVector(matrix, vector);
+            Vector vectorRes = matrix.productMatrixOnVector(matrix, vector);
         });
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 
@@ -94,7 +94,7 @@ class Matrix3FTest {
             Matrix matrix = new Matrix3F(mInput);
             Vector vector = new Vector4F(vInput);
 
-            Vector vectorRes = matrix.multiplyMatrixOnVector(matrix, vector);
+            Vector vectorRes = matrix.productMatrixOnVector(matrix, vector);
         });
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 

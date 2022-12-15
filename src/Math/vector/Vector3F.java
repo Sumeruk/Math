@@ -24,7 +24,7 @@ public class Vector3F extends AbstractVector implements Vector {
         super.values[2] = v3;
     }
 
-    public Vector vectorProduct(Vector v1, Vector v2){
+    public Vector vectorCrossProduct(Vector v1, Vector v2){
         Vector vRes = new Vector3F();
         float[] tmp = new float[3];
         if(v1.getSize() == v2.getSize() && checkLengthInputValues(v1.getValues())

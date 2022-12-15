@@ -3,19 +3,25 @@ package Math.matrix;
 import Math.vector.Vector;
 
 public interface Matrix {
-    Matrix plusMatrix(Matrix m1, Matrix m2);
+    Matrix sumMatrix(final Matrix m1, final Matrix m2);
 
-    Matrix minusMatrix(Matrix m1, Matrix m2);
+    Matrix minusMatrix(final Matrix m1, final Matrix m2);
 
-    Vector multiplyMatrixOnVector(Matrix m1, Vector v1);
+    Vector productMatrixOnVector(final Matrix m1, final Vector v1);
 
-    Matrix multiplyTwoMatrix(Matrix m1, Matrix m2);
+    Matrix productTwoMatrix(final Matrix m1, final Matrix m2);
 
-    Matrix transposition(Matrix m);
+    Matrix transpose(final Matrix m);
 
     int getSize();
 
     float[][] getValues();
 
     void setValue(float[][] value);
+
+    void setZeroMatrix();
+
+    void setSingleMatrix();
+
+
 }

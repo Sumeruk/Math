@@ -137,7 +137,7 @@ class AbstractSquareMatrixTest {
             };
             Matrix m4 = new Matrix4F(matrix4Input);
 
-            m3.plusMatrix(m3, m4);
+            m3.sumMatrix(m3, m4);
         });
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 
@@ -158,7 +158,7 @@ class AbstractSquareMatrixTest {
             };
             Matrix m4 = new Matrix4F(matrix4Input);
 
-            m4.plusMatrix(m3, m4);
+            m4.sumMatrix(m3, m4);
         });
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 
@@ -184,7 +184,7 @@ class AbstractSquareMatrixTest {
         Matrix matrix1 = new Matrix3F(m1);
         Matrix matrix2 = new Matrix3F(m2);
 
-        matrix1 = matrix1.plusMatrix(matrix1, matrix2);
+        matrix1 = matrix1.sumMatrix(matrix1, matrix2);
 
         for (int i = 0; i < 3; i++) {
             assertArrayEquals(expected[i], matrix1.getValues()[i], exp);
@@ -215,7 +215,7 @@ class AbstractSquareMatrixTest {
         matrix1 = new Matrix4F(m1);
         matrix2 = new Matrix4F(m2);
 
-        matrix1 = matrix1.plusMatrix(matrix1, matrix2);
+        matrix1 = matrix1.sumMatrix(matrix1, matrix2);
 
         for (int i = 0; i < 4; i++) {
             assertArrayEquals(expected[i], matrix1.getValues()[i], exp);
@@ -243,7 +243,7 @@ class AbstractSquareMatrixTest {
             };
             Matrix m4 = new Matrix4F(matrix4Input);
 
-            m3.plusMatrix(m3, m4);
+            m3.sumMatrix(m3, m4);
         });
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 
@@ -327,7 +327,7 @@ class AbstractSquareMatrixTest {
             };
             Matrix m4 = new Matrix4F(matrix4Input);
 
-            m3.plusMatrix(m3, m4);
+            m3.sumMatrix(m3, m4);
         });
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 
@@ -348,7 +348,7 @@ class AbstractSquareMatrixTest {
             };
             Matrix m4 = new Matrix4F(matrix4Input);
 
-            m4.plusMatrix(m3, m4);
+            m4.sumMatrix(m3, m4);
         });
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
 
@@ -373,7 +373,7 @@ class AbstractSquareMatrixTest {
         Matrix matrix1 = new Matrix3F(m1);
         Matrix matrix2 = new Matrix3F(m2);
 
-        matrix1 = matrix1.multiplyTwoMatrix(matrix1, matrix2);
+        matrix1 = matrix1.productTwoMatrix(matrix1, matrix2);
 
         for (int i = 0; i < 3; i++) {
             assertArrayEquals(expected[i], matrix1.getValues()[i], exp);
@@ -403,7 +403,7 @@ class AbstractSquareMatrixTest {
         matrix1 = new Matrix4F(m1);
         matrix2 = new Matrix4F(m2);
 
-        matrix2 = matrix1.multiplyTwoMatrix(matrix1, matrix2);
+        matrix2 = matrix1.productTwoMatrix(matrix1, matrix2);
 
         for (int i = 0; i < 4; i++) {
             assertArrayEquals(expected[i], matrix2.getValues()[i], exp);
@@ -428,7 +428,7 @@ class AbstractSquareMatrixTest {
 
         Matrix matrix1 = new Matrix3F(m1);
 
-        matrix1 = matrix1.transposition(matrix1);
+        matrix1 = matrix1.transpose(matrix1);
 
         for (int i = 0; i < matrix1.getSize(); i++) {
             assertArrayEquals(expected[i], matrix1.getValues()[i], exp);
@@ -450,7 +450,7 @@ class AbstractSquareMatrixTest {
 
         matrix1 = new Matrix4F(m1);
 
-        matrix1 = matrix1.transposition(matrix1);
+        matrix1 = matrix1.transpose(matrix1);
 
         for (int i = 0; i < matrix1.getSize(); i++) {
             assertArrayEquals(expected[i], matrix1.getValues()[i], exp);

@@ -7,9 +7,9 @@ public abstract class AbstractVector implements Vector {
     protected float[] values;
 
     @Override
-    public abstract Vector vectorProduct(Vector v1, Vector v2);
+    public abstract Vector vectorCrossProduct(final Vector v1, final Vector v2);
 
-    protected abstract boolean checkLengthInputValues(float[] values);
+    protected abstract boolean checkLengthInputValues(final float[] values);
 
     @Override
     public float[] getValues() {
@@ -22,7 +22,7 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public void setValues(float[] values){
+    public void setValues(final float[] values){
         if(checkLengthInputValues(values)){
             this.values = values;
             this.size = values.length;
@@ -30,7 +30,7 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public Vector plusTwoVectors(Vector v1, Vector v2) {
+    public Vector sumVectors(final Vector v1, final Vector v2) {
 
         if (v1.getSize() == v2.getSize()) {
             float[] tmp = new float[v1.getSize()];
@@ -45,7 +45,7 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public Vector minusTwoVectors(Vector v1, Vector v2) {
+    public Vector minusTwoVectors(final Vector v1, final Vector v2) {
 
         if (v1.getSize() == v2.getSize()) {
             float[] tmp = new float[v1.getSize()];
@@ -60,7 +60,7 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public Vector multiplyVectorOnScalar(Vector v1, float scalar) {
+    public Vector productVectorOnScalar(final Vector v1, final float scalar) {
 
         float[] tmp = new float[v1.getSize()];
 
@@ -74,7 +74,7 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public Vector divisionVectorOnScalar(Vector v1, float scalar){
+    public Vector divisionVectorOnScalar(final Vector v1,final float scalar){
 
         float[] tmp = new float[v1.getSize()];
 
@@ -94,7 +94,7 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public float vectorLength(Vector v1){
+    public float vectorLength(final Vector v1){
         float tmp = 0;
 
         for (int i = 0; i < v1.getSize(); i++) {
@@ -105,7 +105,7 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public Vector vectorNormalization(Vector v1){
+    public Vector vectorNormalization(final Vector v1){
 
         float[] tmp = new float[v1.getSize()];
 
@@ -120,7 +120,7 @@ public abstract class AbstractVector implements Vector {
     }
 
     @Override
-    public float scalarMultiplyVectorOnVector(Vector v1, Vector v2){
+    public float vectorDotProduct(final Vector v1, final Vector v2){
         float tmp = 0;
         if(v1.getSize() == v2.getSize()){
             for (int i = 0; i < v1.getSize(); i++){

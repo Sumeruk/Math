@@ -89,7 +89,7 @@ class AbstractVectorTest {
 
         float[] expected = new float[]{-7.543f, 3.238f};
 
-        vector1 = vector1.plusTwoVectors(vector1, vector2);
+        vector1 = vector1.sumVectors(vector1, vector2);
         assertArrayEquals(expected, vector1.getValues());
 
         MathExceptions thrown = Assertions.assertThrows(MathExceptions.class, () -> {
@@ -97,7 +97,7 @@ class AbstractVectorTest {
             float[] vectorSecond = new float[]{-4.21f, 2.34f, 1};
             Vector v1 = new Vector2F(vectorFirst);
             Vector v2 = new Vector3F(vectorSecond);
-            v1.plusTwoVectors(v1, v2);
+            v1.sumVectors(v1, v2);
         });
         Assertions.assertEquals("Ошибка в вводимых данных!", thrown.getMessage());
     }
@@ -131,7 +131,7 @@ class AbstractVectorTest {
         float scalar = -0.18f;
 
         float[] expected = new float[]{0.59994f,-0.16164f};
-        vector1 = vector1.multiplyVectorOnScalar(vector1, scalar);
+        vector1 = vector1.productVectorOnScalar(vector1, scalar);
         assertArrayEquals(expected, vector1.getValues(), exp);
 
     }
@@ -189,21 +189,21 @@ class AbstractVectorTest {
         Vector vector1 = new Vector2F(vectorValueFirst);
         Vector vector2 = new Vector2F(vectorValueSecond);
 
-        assertEquals(-8.34,vector1.scalarMultiplyVectorOnVector(vector1, vector2), exp);
+        assertEquals(-8.34,vector1.vectorDotProduct(vector1, vector2), exp);
 
         vectorValueFirst = new float[]{0.56f, 1.22f, -0.11f};
         vectorValueSecond = new float[]{-2.87f, 0.72f, 2.2f};
         vector1 = new Vector3F(vectorValueFirst);
         vector2 = new Vector3F(vectorValueSecond);
 
-        assertEquals(-0.9708,vector1.scalarMultiplyVectorOnVector(vector1, vector2), exp);
+        assertEquals(-0.9708,vector1.vectorDotProduct(vector1, vector2), exp);
 
         vectorValueFirst = new float[]{2, -0.002f,6.5f,0.03f};
         vectorValueSecond = new float[]{1.001f, -4.87f, 0.08f, 1};
         vector1 = new Vector4F(vectorValueFirst);
         vector2 = new Vector4F(vectorValueSecond);
 
-        assertEquals(2.56174,vector1.scalarMultiplyVectorOnVector(vector1, vector2), exp);
+        assertEquals(2.56174,vector1.vectorDotProduct(vector1, vector2), exp);
 
 
     }

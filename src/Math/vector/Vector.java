@@ -1,24 +1,26 @@
 package Math.vector;
 
+import Math.matrix.Matrix;
+
 public interface Vector {
 
-    Vector vectorProduct(Vector v1, Vector v2);
+    Vector vectorCrossProduct(final Vector v1, final Vector v2);
 
-    void setValues(float[] values);
+    void setValues(final float[] values);
 
-    Vector plusTwoVectors(Vector v1, Vector v2);
+    Vector sumVectors(final Vector v1, final Vector v2);
 
-    Vector minusTwoVectors(Vector v1, Vector v2);
+    Vector minusTwoVectors(final Vector v1, final Vector v2);
 
-    Vector multiplyVectorOnScalar(Vector v1, float scalar);
+    Vector productVectorOnScalar(final Vector v1, final float scalar);
 
-    Vector divisionVectorOnScalar(Vector v1, float scalar);
+    Vector divisionVectorOnScalar(final Vector v1, final float scalar);
 
-    float vectorLength(Vector v1);
+    float vectorLength(final Vector v1);
 
-    Vector vectorNormalization(Vector v1);
+    Vector vectorNormalization(final Vector v1);
 
-    float scalarMultiplyVectorOnVector(Vector v1, Vector v2);
+    float vectorDotProduct(final Vector v1, final Vector v2);
 
     float[] getValues();
 
